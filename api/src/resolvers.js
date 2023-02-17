@@ -5,19 +5,16 @@
 
 module.exports = {
   Query: {
-    
+    pets : (_,{input},{models}) => {
+      return models.Pet.findMany({type : input.type})
+    },
+    hello(){ return 'world'}
   },
-  Mutation: {
+  // Mutation: {
     
-  },
-  Pet: {
-    img(pet) {
-      return pet.type === 'DOG'
-        ? 'https://placedog.net/300/300'
-        : 'http://placekitten.com/300/300'
-    }
-  },
-  User: {
-    
+  // },
+  Pet : {
+    name : (pet) => "Mrs " +pet.name,
+    type : (pet) => pet.type
   }
 }
