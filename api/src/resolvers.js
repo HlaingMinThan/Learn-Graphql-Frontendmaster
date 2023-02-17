@@ -12,9 +12,11 @@ module.exports = {
       return models.Pet.findOne({id : input.id})
     }
   },
-  // Mutation: {
-    
-  // },
+  Mutation: {
+    addPet(_,{input} , {models})  {
+      return models.Pet.create(input)
+    }
+  },
   Pet : {
     name : (pet) => "Mrs " +pet.name,
     type : (pet) => pet.type
