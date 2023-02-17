@@ -6,7 +6,7 @@
 module.exports = {
   Query: {
     pets : (_,{input},{models}) => {
-      return models.Pet.findMany({type : input.type})
+      return models.Pet.findMany(input ? {type : input.type} : null)
     },
     pet(_,{input},{models}){ 
       return models.Pet.findOne({id : input.id})
@@ -19,6 +19,6 @@ module.exports = {
   },
   Pet : {
     name : (pet) => "Mrs " +pet.name,
-    type : (pet) => pet.type
+    type : (pet) => pet.type.toUpperCase()
   }
 }

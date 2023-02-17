@@ -12,10 +12,16 @@ const typeDefs = gql`
         id : ID!,
         createdAt : String!,
         name : String!,
-        type : String!
+        type : PetType!
     },
+
+    enum PetType {
+        CAT
+        DOG
+    }
+    
     input PetsInput {
-        type : String!
+        type : PetType!
     }
     input PetInput {
         id : String!
@@ -26,7 +32,7 @@ const typeDefs = gql`
     }
     input AddPetInput {
         name : String!,
-        type : String!
+        type : PetType!
     }
     type Mutation {
         addPet(input : AddPetInput) : Pet!
