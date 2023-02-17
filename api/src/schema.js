@@ -14,12 +14,15 @@ const typeDefs = gql`
         name : String!,
         type : String!
     },
-    input PetInput {
+    input PetsInput {
         type : String!
     }
+    input PetInput {
+        id : String!
+    }
     type Query  {
-        pets(input : PetInput) : [Pet]!
-        hello : String #test query is the first resolve
+        pets(input : PetsInput) : [Pet]!
+        pet(input : PetInput ) :  Pet
     }
 `;
 

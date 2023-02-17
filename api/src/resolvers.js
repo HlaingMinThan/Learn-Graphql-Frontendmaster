@@ -8,7 +8,9 @@ module.exports = {
     pets : (_,{input},{models}) => {
       return models.Pet.findMany({type : input.type})
     },
-    hello(){ return 'world'}
+    pet(_,{input},{models}){ 
+      return models.Pet.findOne({id : input.id})
+    }
   },
   // Mutation: {
     
