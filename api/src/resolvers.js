@@ -5,6 +5,9 @@
 
 module.exports = {
   Query: {
+    user : (_,{id},{models}) => {
+      return models.User.findOne({id})
+    },
     pets : (_,{input},{models}) => {
       return models.Pet.findMany(input ? {type : input.type} : null)
     },
@@ -39,9 +42,15 @@ module.exports = {
       return models.Pet.create(input)
     }
   },
+  User : {
+    pets(user,{input} , {models}){
+      return models.Pet.findMany({user : user.id})
+    }
+  },
   Pet : {
     name : (pet) => "Mrs " +pet.name,
-    type : (pet) => pet.type.toUpperCase()
+    type : (pet) => pet.type.toUpperCase(),
+    user : (pet,args,{models}) => (models.User.findOne({id : pet.user})) 
   },
   //Interface Shoe
   Shoe : {

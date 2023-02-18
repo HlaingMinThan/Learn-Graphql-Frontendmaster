@@ -6,7 +6,8 @@ const { gql } = require('apollo-server')
 const typeDefs = gql`
     type User  {
         id : ID!,
-        username : String!
+        username : String!,
+        pets : [Pet]!
     },
 
     #unions are same as interface, the only difference is unions doesn't  have to exists common fields, but interface does so when we query a union return type, we can't add common fields and we can just use ... conditiontal retrieving
@@ -46,7 +47,8 @@ const typeDefs = gql`
         id : ID!,
         createdAt : String!,
         name : String!,
-        type : PetType!
+        type : PetType!,
+        user : User!
     },
 
     enum PetType {
@@ -61,6 +63,7 @@ const typeDefs = gql`
         id : String!
     }
     type Query  {
+        user(id : ID) : User!
         pets(input : PetsInput) : [Pet]!
         pet(input : PetInput ) :  Pet,
         shoes : [Shoe]!
