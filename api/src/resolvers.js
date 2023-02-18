@@ -2,6 +2,12 @@
  * Here are your Resolvers for your Schema. They must match
  * the type definitions in your scheama
  */
+const user = {
+  id : '1',
+  username : 'hlaing min than',
+  pets : [],
+  shoes : []
+}
 
 module.exports = {
   Query: {
@@ -45,6 +51,9 @@ module.exports = {
   User : {
     pets(user,{input} , {models}){
       return models.Pet.findMany({user : user.id})
+    },
+    shoes(user){
+      return [{ brand : "Nike" , sport : "Yes" , size : 10},{ brand : "Timberlank" , hasGrip : true , size : 10}]
     }
   },
   Pet : {
@@ -58,6 +67,16 @@ module.exports = {
     __resolveType(shoe) {
        if(shoe.sport) return "Sneaker"
        return  "Boot";
+    }
+  },
+  Sneaker  : {
+    user() {
+      return  user;
+    }
+  },
+  Boot  : {
+    user() {
+      return  user;
     }
   },
   //Union Footwear

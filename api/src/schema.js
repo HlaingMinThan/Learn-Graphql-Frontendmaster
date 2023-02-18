@@ -8,6 +8,7 @@ const typeDefs = gql`
         id : ID!,
         username : String!,
         pets : [Pet]!
+        shoes : [Shoe]!
     },
 
     #unions are same as interface, the only difference is unions doesn't  have to exists common fields, but interface does so when we query a union return type, we can't add common fields and we can just use ... conditiontal retrieving
@@ -30,17 +31,20 @@ const typeDefs = gql`
     interface Shoe {
         brand : String!
         size : Int!,
+        user : User!
     }
 
     type Sneaker implements Shoe {
         brand : String!
-        size : Int!,
+        size : Int!
         sport : String
+        user : User!
     }
     type Boot implements Shoe {
         brand : String!
         size : Int!,
         hasGrip : Boolean
+        user : User!
     }
 
     type Pet  {
