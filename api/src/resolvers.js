@@ -10,6 +10,25 @@ module.exports = {
     },
     pet(_,{input},{models}){ 
       return models.Pet.findOne({id : input.id})
+    },
+    /**
+     * dynamic query
+     * 
+          query {
+            shoes {
+              brand,
+              size
+              ...on Sneaker {
+                sport
+              }
+              ...on Boot {
+                hasGrip
+              }
+            }
+          }
+     */
+    shoes() {
+      return [{ brand : "Nike" , sport : "Yes" , size : 10},{ brand : "Timberlank" , hasGrip : true , size : 10}]
     }
   },
   Mutation: {
@@ -20,5 +39,12 @@ module.exports = {
   Pet : {
     name : (pet) => "Mrs " +pet.name,
     type : (pet) => pet.type.toUpperCase()
+  },
+  Shoe : {
+    //tell graphql how to differentiate a shoe
+    __resolveType(shoe) {
+       if(shoe.sport) return "Sneaker"
+       return  "Boot";
+    }
   }
 }

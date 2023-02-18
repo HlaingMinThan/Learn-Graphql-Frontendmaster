@@ -8,6 +8,23 @@ const typeDefs = gql`
         id : ID!,
         username : String!
     },
+
+    interface Shoe {
+        brand : String!
+        size : Int!,
+    }
+
+    type Sneaker implements Shoe {
+        brand : String!
+        size : Int!,
+        sport : String
+    }
+    type Boot implements Shoe {
+        brand : String!
+        size : Int!,
+        hasGrip : Boolean
+    }
+
     type Pet  {
         id : ID!,
         createdAt : String!,
@@ -19,7 +36,7 @@ const typeDefs = gql`
         CAT
         DOG
     }
-    
+
     input PetsInput {
         type : PetType!
     }
@@ -28,7 +45,8 @@ const typeDefs = gql`
     }
     type Query  {
         pets(input : PetsInput) : [Pet]!
-        pet(input : PetInput ) :  Pet
+        pet(input : PetInput ) :  Pet,
+        shoes : [Shoe]!
     }
     input AddPetInput {
         name : String!,
