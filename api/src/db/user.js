@@ -2,8 +2,9 @@ const nanoid = require('nanoid')
 
 const createUserModel = db => {
   return {
-    findOne() {
+    findOne(filter) {
       return db.get('user')
+        .find(filter)
         .value()
     },
 

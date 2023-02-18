@@ -1,38 +1,56 @@
 {
-  "user": {
-    "id": "jBWMVGjm50l6LGwepDoty",
-    "username": "frontendmaster"
-  },
+  "user": [
+    {
+      "id": "jBWMVGjm50l6LGwepDoty",
+      "username": "frontendmaster"
+    },
+    {
+      "id": "jBWMVGjm50asfasdfl6LGwepDoty",
+      "username": "Faizal"
+    }
+  ],
   "pet": [
     {
       "id": "1",
       "createdAt": "12.2001",
       "name": "Aung Nak",
-      "type": "Dog"
+      "type": "Dog",
+      "user" : "jBWMVGjm50l6LGwepDoty"
     },
     {
       "id": "2",
       "createdAt": "12.2001",
       "name": "Pussy",
-      "type": "Cat"
+      "type": "Cat",
+      "user" : "jBWMVGjm50l6LGwepDoty"
     },
     {
       "id": "s3-xn2lZv3LAWqwXBNJVu",
       "createdAt": 1676658996869,
       "name": "Shwe War",
-      "type": "Cat"
+      "type": "Cat",
+      "user" : "jBWMVGjm50l6LGwepDoty"      
     },
     {
       "id": "P15EinifAKootHf2OOO6T",
       "createdAt": 1676659020014,
       "name": "Shwe War Pussy",
-      "type": "Cat"
+      "type": "Cat",
+      "user" : "jBWMVGjm50l6LGwepDoty"
     },
     {
       "id": "60oe64mU4aNntu_cey72M",
       "createdAt": 1676660911922,
-      "name": "Shwe War Pussy",
-      "type": "CAT"
+      "name": "user's 2 Pussy",
+      "type": "CAT",
+      "user" : "jBWMVGjm50asfasdfl6LGwepDoty"
+    },
+    {
+      "id": "60oe64mU4aNntu_ceasdy72M",
+      "createdAt": 1676660911922,
+      "name": "user's 2 Shwe war",
+      "type": "CAT",
+      "user" : "jBWMVGjm50asfasdfl6LGwepDoty"
     }
   ]
 }
